@@ -45,7 +45,8 @@ export default class Landing extends Component {
         todo: this.state.input,
       };
       this.context.todo.push(obj);
-      this.setState({ getApiData: this.context.todo });
+      this.setState({ getApiData: this.context.todo, input: "" });
+      alert("added");
       localStorage.setItem("TodoData", JSON.stringify(this.context.todo));
     }
   };
@@ -81,9 +82,10 @@ export default class Landing extends Component {
             <input
               type="text"
               class="form-control"
-              placeholder="Craete new todo"
+              placeholder="Create new todo"
               aria-label="Username"
               aria-describedby="basic-addon1"
+              value={this.state.input}
               onChange={this.InputHandler}
             />
             <button className="btn btn-primary" onClick={this.CreateHandler}>
