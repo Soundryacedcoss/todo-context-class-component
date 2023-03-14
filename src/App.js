@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import React, { Component } from "react";
+import UserContext from "./components/contextData";
+import Landing from "./components/Landing";
+import "./App.css";
+import { toggleContext } from "./components/contextData";
+export default class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      todo: [],
+      loader: true,
+      class: "",
+      toggle: "",
+    };
+  }
+  render() {
+    return (
+      <div className="App">
+        <UserContext.Provider value={this.state}>
+          <toggleContext.Provider value={this.state}>
+            <Landing />
+          </toggleContext.Provider>
+        </UserContext.Provider>
+      </div>
+    );
+  }
 }
-
-export default App;

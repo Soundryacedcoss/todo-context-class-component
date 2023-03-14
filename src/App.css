@@ -1,38 +1,74 @@
 .App {
-  text-align: center;
+  margin: auto;
+  width: 1140px;
+}
+.landingpage{
+  width: 500px;
+  margin: auto;
+}
+.landing {
+  width: 500px;
+  /* margin: 1% 16%; */
+  /* box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
+    rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
+    rgba(255, 255, 255, 0.08) 0px 1px 0px inset; */
+    height: 600px;
+    overflow-x: scroll;
+}
+.landing__list {
+  list-style: none;
+  padding: 2%;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  margin-top: 2%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* styling of toggle switch button */
+.checkbox {
+  opacity: 0;
+  position: absolute;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.label {
+  width: 50px;
+  height: 26px;
+  background-color: dodgerblue;
   display: flex;
-  flex-direction: column;
+  border-radius: 50px;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-content: space-between;
+  padding: 5px;
+  position: relative;
+  transform: scale(1.5);
+}
+
+.ball {
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  border-radius: 50%;
+  transition: transform 0.2s linear;
+}
+
+/*  target the elemenent after the label*/
+.checkbox:checked + .label .ball {
+  transform: translateX(24px);
+}
+
+.fa-moon-o {
+  color: pink;
+}
+
+.fa-sun-o {
+  color: rgb(255, 255, 0);
+}
+
+.night {
+  background-color: black;
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.day {
+  background-color: rgb(255, 254, 254);
+  color: black;
 }
