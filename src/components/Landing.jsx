@@ -95,9 +95,11 @@ export default class Landing extends Component {
             <h3>Todo list</h3>
 
             {this.context.loader === true ? (
-              <div class="spinner-border text-primary" role="status">
-                <span class="visually-hidden">Loading...</span>
-              </div>
+              <center>
+                <div class="spinner-border text-primary" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </center>
             ) : (
               JSON.parse(localStorage.getItem("TodoData")).map((item) => (
                 <li className="landing__list">{item.todo}</li>

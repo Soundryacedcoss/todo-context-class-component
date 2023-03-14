@@ -21,17 +21,27 @@ export default class Search extends Component {
       JSON.parse(localStorage.getItem("TodoData")).forEach((element) => {
         let todo1 = element.todo.toLowerCase();
         if (todo1.match(input)) {
+          console.log("if");
           temp.push(element);
-          this.setState({ searchData: temp });
+          console.log(temp);
+          this.setState({ searchData: temp, msg: "" });
         } else {
-          this.setState({ searchData: [], msg: "result Not found" });
+          this.setState({ searchData: temp, msg: "not found" });
         }
       });
     } else if (e.target.value.length === 0) {
-      this.setState({ searchData: [], msg: "" });
+      this.setState({ searchData: [] });
     }
   };
   render() {
+    console.log(
+      "search",
+      this.state.searchData.length,
+      "input",
+      this.state.input,
+      "msg",
+      this.state.msg
+    );
     return (
       <div>
         <div class="input-group mb-3 w-100">
@@ -45,7 +55,6 @@ export default class Search extends Component {
           />
         </div>
         <div>
-          {this.state.msg.length === 0 ? "" : this.state.msg}
           {this.state.searchData.map((item) => (
             <li className="landing__list">{item.todo}</li>
           ))}
