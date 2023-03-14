@@ -46,7 +46,7 @@ export default class Landing extends Component {
       };
       this.context.todo.push(obj);
       this.setState({ getApiData: this.context.todo, input: "" });
-      alert("added");
+      alert("todo created successfully!");
       localStorage.setItem("TodoData", JSON.stringify(this.context.todo));
     }
   };
