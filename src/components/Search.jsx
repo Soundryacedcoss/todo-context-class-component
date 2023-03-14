@@ -7,25 +7,29 @@ export default class Search extends Component {
     this.state = {
       input: "",
       searchData: [],
+      msg: "",
     };
   }
+  // context state
   static contextType = DataContext;
-  InputHandler = (e) => {
-    this.setState({ input: e.target.value });
-  };
-  SearchHandler = () => {
+  // searching todo .
+  SearchHandler = (e) => {
     let temp = [];
+    this.setState({ input: e.target.value });
     let input = this.state.input.toLowerCase();
-    console.log(input);
-    JSON.parse(localStorage.getItem("TodoData")).forEach((element) => {
-      let todo1 = element.todo.toLowerCase();
-      if (todo1.match(input)) {
-        console.log(element);
-        temp.push(element);
-        this.setState({ searchData: temp });
-      }
-    });
-    console.log(this.context.searchData);
+    if (e.target.value.length >= 2) {
+      JSON.parse(localStorage.getItem("TodoData")).forEach((element) => {
+        let todo1 = element.todo.toLowerCase();
+        if (todo1.match(input)) {
+          temp.push(element);
+          this.setState({ searchData: temp });
+        } else {
+          this.setState({ searchData: [], msg: "result Not found" });
+        }
+      });
+    } else if (e.target.value.length === 0) {
+      this.setState({ searchData: [], msg: "" });
+    }
   };
   render() {
     return (
@@ -37,14 +41,11 @@ export default class Search extends Component {
             placeholder="search your todo"
             aria-label="Username"
             aria-describedby="basic-addon1"
-            onChange={this.InputHandler}
+            onChange={this.SearchHandler}
           />
-          <button className="btn btn-primary" onClick={this.SearchHandler}>
-            search todo
-          </button>
         </div>
-        {this.state.searchData.length !== 0 ? <h2>Search result</h2> : ""}
         <div>
+          {this.state.msg.length === 0 ? "" : this.state.msg}
           {this.state.searchData.map((item) => (
             <li className="landing__list">{item.todo}</li>
           ))}

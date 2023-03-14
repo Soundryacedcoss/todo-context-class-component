@@ -6,6 +6,7 @@ import { toggleContext } from "./components/contextData";
 export default class App extends Component {
   constructor() {
     super();
+    // state
     this.state = {
       todo: [],
       loader: true,
