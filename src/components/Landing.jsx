@@ -95,7 +95,6 @@ export default class Landing extends Component {
           <Search />
           <div className="landing mt-3 p-5">
             <h3>Todo list</h3>
-
             {this.context.loader === true ? (
               <center>
                 <div class="spinner-border text-primary" role="status">

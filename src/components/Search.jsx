@@ -26,11 +26,11 @@ export default class Search extends Component {
           console.log(temp);
           this.setState({ searchData: temp, msg: "" });
         } else {
-          this.setState({ searchData: temp, msg: "not found" });
+          this.setState({ searchData: temp, msg: "Result not found" });
         }
       });
     } else if (e.target.value.length === 0) {
-      this.setState({ searchData: [] });
+      this.setState({ searchData: [], msg: "" });
     }
   };
   render() {
@@ -55,9 +55,13 @@ export default class Search extends Component {
           />
         </div>
         <div>
-          {this.state.searchData.map((item) => (
-            <li className="landing__list">{item.todo}</li>
-          ))}
+          {this.state.searchData.length > 0 ? (
+            this.state.searchData.map((item) => (
+              <li className="landing__list">{item.todo}</li>
+            ))
+          ) : (
+            <p>{this.state.msg}</p>
+          )}
         </div>
         <hr />
       </div>
