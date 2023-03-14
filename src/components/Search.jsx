@@ -23,7 +23,6 @@ export default class Search extends Component {
         if (todo1.match(input)) {
           console.log("if");
           temp.push(element);
-          console.log(temp);
           this.setState({ searchData: temp, msg: "" });
         } else {
           this.setState({ searchData: temp, msg: "Result not found" });
