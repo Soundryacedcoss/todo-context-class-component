@@ -51,25 +51,23 @@ export default class Landing extends Component {
     }
   };
   // theme toggler handler
-  ToggleHanlder = (e) => {
+  ToggleHandler = (e) => {
     this.context.toggle = e.target.checked;
-    if (e.target.checked === true) {
-      this.context.class = "night";
-      this.setState({ switch: "false" });
-    } else if (e.target.checked === false) {
-      this.context.class = "day";
-      this.setState({ switch: "trueqwr" });
-    }
+    this.setState({ switch: "false" });
+    e.target.checked === true
+      ? (this.context.class = "night")
+      : (this.context.class = "day");
   };
   render() {
     return (
+      <div className="p-2">
       <div className={`${this.context.class}`}>
-        <div style={{ marginLeft: "4%" }} className="mt-2">
+        <div style={{ marginLeft: "4%" }} className="p-3">
           <input
             type="checkbox"
             class="checkbox"
             id="checkbox"
-            onChange={this.ToggleHanlder}
+            onChange={this.ToggleHandler}
           />
           <label for="checkbox" class="label">
             <i class="fa fa-moon-o"></i>
@@ -108,6 +106,7 @@ export default class Landing extends Component {
             )}
           </div>
         </div>
+      </div>
       </div>
     );
   }
